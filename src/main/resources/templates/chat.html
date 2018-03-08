@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.auth0.com/js/auth0/9.3.1/auth0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <title>WEB CHAT</title>
+</head>
+<body>
+
+
+
+<div class="container-fluid ">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Hello, [[${username}]]  <span id="user"></span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+                      <span class="navbar-text-right">
+                            <a href="/logout" class="btn btn-primary">Logout</a>
+                      </span>
+        </div>
+    </nav>
+
+    <div id="chat-page">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>CHAT</h2>
+            </div>
+            <div class="scrollableClass">
+                <ul id="messageArea">
+
+                </ul>
+            </div>
+            <div>
+
+
+            </div>
+            <form id="messageForm" class="" name="messageForm" nameForm="messageForm">
+                <div class="d-flex justify-content-start chat-footer">
+                    <input type="text" id="message" placeholder="Message..." autocomplete="off" class="form-control "/>
+                    <button  type="submit" class="btn primary">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="/js/sockjs.min.js"></script>
+<script src="/js/stomp.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+            var us = [[${username}]];
+            connect(event,us);
+
+        /*]]>*/
+    </script>
+
+</body>
+</html>
